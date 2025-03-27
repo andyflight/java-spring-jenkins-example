@@ -3,7 +3,7 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                git branch: 'main', url: 'https://github.com/andyflight/java-spring-jenkins-example'
+                git branch: 'master', url: 'https://github.com/andyflight/java-spring-jenkins-example'
             }
         }
         stage('Test') {
