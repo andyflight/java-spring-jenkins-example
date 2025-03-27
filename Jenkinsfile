@@ -13,7 +13,11 @@ pipeline {
             post {
                 success {
                     junit 'build/test-results/test/*.xml'
-                    step([$class: 'JaCoCoPublisher', execPattern: 'build/jacoco/test.exec', classPattern: 'build/classes/*', sourcePattern: 'src/main/*'])
+                    recordCoverage(
+                        coverageFiles: 'build/reports/jacoco/test/jacocoTestReport.xml',
+                        sourceFiles: 'src/main/java/**',
+                        tool: 'JaCoCo'
+                    )
                 }
             }
         }
