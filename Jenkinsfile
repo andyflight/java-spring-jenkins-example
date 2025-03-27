@@ -13,11 +13,7 @@ pipeline {
             post {
                 success {
                     junit 'build/test-results/test/*.xml'
-                    recordCoverage(
-                        coverageFiles: 'build/reports/jacoco/test/jacocoTestReport.xml',
-                        sourceFiles: 'src/main/java/**',
-                        tool: 'JaCoCo'
-                    )
+                    jacoco(execPattern: '**/build/jacoco/**.exec', classPattern: '**/classes/*/main')
                 }
             }
         }
